@@ -174,7 +174,7 @@ public class Main extends Application {
         if (collision && input.isAttack() && !Input.getIsAttacking()) {
             Input.setIsAttacking(true);
             System.out.println(enemy.health);
-            enemy.health--;//Enemy's health decreasing
+            enemy.getDamagedBy(player);//Enemy's health decreasing
 
         } else {
             collisionText.setText("");

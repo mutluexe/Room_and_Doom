@@ -17,8 +17,6 @@ public class Player extends SpriteBase {
     double characterMaxY;
 
     Input input;
-    Enemy enemy;
-    Player player;
 
     double speed;
     static SpriteAnimation animation;
@@ -38,7 +36,7 @@ public class Player extends SpriteBase {
         attackAnimation = new SpriteAnimation(imageView, Duration.millis(1000), 8, 8, 0, 0, 64, 64);
         animation.setCycleCount(Animation.INDEFINITE);
         attackAnimation.setCycleCount(1);
-        attackAnimation.setOnFinished(e -> Input.setIsAttacking(false)); //Everytime when cycle finished it set's the value 0
+        attackAnimation.setOnFinished(e -> Input.setIsAttacking(false)); //Every time when cycle finished it set's the value 0
         init();
     }
 
@@ -135,9 +133,7 @@ public class Player extends SpriteBase {
         } else if (Double.compare(x, characterMaxX) > 0) {
             x = characterMaxX;
         }
-
     }
-
 
     @Override
     public void checkRemovability() {
