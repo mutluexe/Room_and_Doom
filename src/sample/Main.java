@@ -75,7 +75,8 @@ public class Main extends Application {
                 players.forEach(sprite -> sprite.move());
 
                 // check collisions
-                checkCollisions();
+                checkCollisionWithEnemy();
+                EnemyBlock();
 
                 // update sprites in scene
                 players.forEach(sprite -> sprite.updateUI());
@@ -100,6 +101,12 @@ public class Main extends Application {
         playerImage = new Image(getClass().getResource("/spritesheet.png").toExternalForm());
         enemyImage = new Image(getClass().getResource("/enemy.png").toExternalForm());
 
+    }
+    public void EnemyBlock(){
+        if(collision){
+            player.setX(player.getX()-player.getDx());
+            player.setY(player.getY()-player.getDy());
+        }
     }
 
     //Here just a temporary method we will change it to a health bar
@@ -151,7 +158,7 @@ public class Main extends Application {
         }
     }
 
-    private void checkCollisions() {
+    private void checkCollisionWithEnemy() {
         collision = false;
 
         for (Player player : players) {
