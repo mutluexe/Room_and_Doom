@@ -8,6 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import map.*;
+
+
 
 import java.util.*;
 
@@ -16,6 +19,10 @@ public class Main extends Application {
     Input input;
     Player player;
     Enemy enemy;
+
+
+    public Grid grid;//Obstacle's grid
+
 
     Pane playfieldLayout;
     Pane scoreLayout;
@@ -28,6 +35,8 @@ public class Main extends Application {
     //Creating lists
     List<Player> players = new ArrayList<>();
     List<Enemy> enemies = new ArrayList<>();
+
+    ArrayList<Position> obstacles = new ArrayList<>();
 
     /*
     Here collision text we will change it later and
@@ -43,15 +52,22 @@ public class Main extends Application {
 
         Group root = new Group();
 
+        grid=new Grid();//Obstacle's grid
+
         // create layers
         playfieldLayout = new Pane();
         scoreLayout = new Pane();
 
+
+
         root.getChildren().add(playfieldLayout);
         root.getChildren().add(scoreLayout);
 
-        scene = new Scene(root, Settings.SCENE_WIDTH, Settings.SCENE_HEIGHT);
 
+        initObstacles();//first initiliaze after create
+        createObstacles();
+
+        scene = new Scene(root, Settings.SCENE_WIDTH, Settings.SCENE_HEIGHT);
         primaryStage.setTitle("Room & Doom");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -61,6 +77,9 @@ public class Main extends Application {
         createScoreLayer();
         createPlayers();
         createEnemy();
+
+
+
 
 
         AnimationTimer gameLoop = new AnimationTimer() {
@@ -74,9 +93,10 @@ public class Main extends Application {
                 // movement
                 players.forEach(sprite -> sprite.move());
 
+
                 // check collisions
                 checkCollisionWithEnemy();
-                EnemyBlock();
+                enemyBlock();
 
                 // update sprites in scene
                 players.forEach(sprite -> sprite.updateUI());
@@ -102,7 +122,8 @@ public class Main extends Application {
         enemyImage = new Image(getClass().getResource("/enemy.png").toExternalForm());
 
     }
-    public void EnemyBlock(){
+
+    public void enemyBlock(){
         if(collision){
             player.setX(player.getX()-player.getDx());
             player.setY(player.getY()-player.getDy());
@@ -141,7 +162,6 @@ public class Main extends Application {
 
     }
 
-
     private void removeSprites(List<? extends SpriteBase> spriteList) {
         Iterator<? extends SpriteBase> iterator = spriteList.iterator();
         while (iterator.hasNext()) {
@@ -170,6 +190,7 @@ public class Main extends Application {
         }
     }
 
+
     private void updateScore() {
         if (collision && input.isAttack() && !Input.getIsAttacking()) {
             Input.setIsAttacking(true);
@@ -181,6 +202,93 @@ public class Main extends Application {
         }
 
     }
+
+
+    public void createObstacles(){
+
+        for (int i =0;i< Settings.COLUMN_CELL_COUNT;i++) {
+
+            for (int j = 0; j < Settings.ROW_CELL_COUNT; j++) {
+
+                Position position = new Position(i, j);
+
+                int type = 0;
+
+                //Check if not boundary
+
+                //BURAYI TAM ANLAMADIM???????
+                if (i != Settings.COLUMN_CELL_COUNT - 1 && j != Settings.ROW_CELL_COUNT - 1 && i != 0 && j != 0) {
+                    if (i == 1 && j == 1)
+                        type = 0;
+                    else if (isObstacle(position))//Bu pozisyonda obtacle için oyuk varsa border ı koy demek
+                        type = 1;
+
+                }
+
+
+                Cell cell = new Cell(position, type);
+                grid.addCell(cell);//Cell was added to grid
+
+                playfieldLayout.getChildren().add(cell.getNode());//Mevcut Layouta gömdüm
+            }
+
+        }
+    }
+
+
+    public  void initObstacles(){//Randomly filled but we must think about that
+
+        //Generate Left Obstacles
+        for(int i=0;i<Settings.ROW_CELL_COUNT;i++){
+            obstacles.add(new Position(i, 1));
+        }
+
+        //Generate Reflection
+        int loopSize = obstacles.size();
+        for (int i =0;i< loopSize;i++){
+
+            Position tmpPosition = obstacles.get(i);
+            Position newPosition = new Position(tmpPosition.getRow(), Settings.COLUMN_CELL_COUNT-1-tmpPosition.getColumn());
+            obstacles.add(newPosition);
+
+        }
+
+        //Generate Center Obstacles
+        obstacles.add(new Position(0,0));
+        obstacles.add(new Position(6, 6));
+        obstacles.add(new Position(7, 6));
+        obstacles.add(new Position(8, 6));
+        obstacles.add(new Position(8, 7));
+        obstacles.add(new Position(8, 8));
+
+        obstacles.add(new Position(7, 8));
+        obstacles.add(new Position(6, 8));
+
+        obstacles.add(new Position(10, 7));
+        obstacles.add(new Position(11, 7));
+        obstacles.add(new Position(12, 7));
+
+        obstacles.add(new Position(2, 7));
+        obstacles.add(new Position(3, 7));
+        obstacles.add(new Position(4, 7));
+
+
+
+    }
+
+
+    public  boolean isObstacle(Position position){
+
+        for (int i =0;i< obstacles.size();i++){
+            Position tmpPosition = obstacles.get(i);
+            if (position.getRow() == tmpPosition.getRow() && position.getColumn() == tmpPosition.getColumn())
+                return true;
+        }
+
+        return false;
+
+    }//Controlling obstacle where the position
+
 
     public static void main(String[] args) {
         launch(args);

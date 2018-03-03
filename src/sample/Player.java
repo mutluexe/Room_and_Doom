@@ -18,6 +18,7 @@ public class Player extends SpriteBase {
 
     Input input;
 
+
     double speed;
     static SpriteAnimation animation;
     static SpriteAnimation attackAnimation;
@@ -31,13 +32,15 @@ public class Player extends SpriteBase {
 
         //Here we crop the style sheet's specific part
         this.imageView.setViewport(new Rectangle2D(0, 0, 64, 64));
+
         //Setting animations
         animation = new SpriteAnimation(imageView, Duration.millis(800), 9, 9, 0, 0, 64, 64);
         attackAnimation = new SpriteAnimation(imageView, Duration.millis(1000), 8, 8, 0, 0, 64, 64);
         animation.setCycleCount(Animation.INDEFINITE);
         attackAnimation.setCycleCount(1);
-        attackAnimation.setOnFinished(e -> Input.setIsAttacking(false)); //Every time when cycle finished it set's the value 0
+        attackAnimation.setOnFinished(e -> Input.setIsAttacking(false)); //Everytime when cycle finished it set's the value 0
         init();
+
     }
 
 
@@ -50,6 +53,7 @@ public class Player extends SpriteBase {
         characterMaxY = Settings.SCENE_HEIGHT - Settings.TILE_HEIGHT;
 
     }
+
 
     public void processInput() {
 
@@ -133,7 +137,9 @@ public class Player extends SpriteBase {
         } else if (Double.compare(x, characterMaxX) > 0) {
             x = characterMaxX;
         }
+
     }
+
 
     @Override
     public void checkRemovability() {
