@@ -3,6 +3,10 @@ package sample;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import map.Cell;
+import map.Position;
+import javafx.scene.shape.*;
+
 
 public abstract class SpriteBase extends Pane {
     //VARİABLE LAR DÜZENLENMELİ ÇOK KARIŞIK.
@@ -15,6 +19,7 @@ public abstract class SpriteBase extends Pane {
 
     double x;
     double y;
+    Rectangle rectangle;
 
     double dx;
     double dy;
@@ -36,6 +41,9 @@ public abstract class SpriteBase extends Pane {
         this.image = image;
         this.x = x;
         this.y = y;
+        this.width = image.getWidth();
+        this.height = image.getHeight();
+        rectangle = new Rectangle(x,y,width,height);
         this.dx = dx;
         this.dy = dy;
 
@@ -43,17 +51,14 @@ public abstract class SpriteBase extends Pane {
         this.damage = damage;
 
         this.imageView = new ImageView(image);
-        this.imageView.relocate(x, y);
-
-        this.width = image.getWidth();
-        this.height = image.getHeight();
+        this.imageView.relocate(rectangle.getX(), rectangle.getY());
 
         addToLayer();
 
     }
 
     public void addToLayer() {
-        this.layer.getChildren().addAll(this.imageView);
+        this.layer.getChildren().addAll(imageView);
 
     }
 
@@ -131,8 +136,8 @@ public abstract class SpriteBase extends Pane {
         if (!canMove)
             return;
 
-        x += dx;
-        y += dy;
+        rectangle.setX(rectangle.getX()+dx);
+        rectangle.setY(rectangle.getY()+dy);
 
     }
 
@@ -146,7 +151,7 @@ public abstract class SpriteBase extends Pane {
 
     public void updateUI() {
 
-        imageView.relocate(x, y);
+        imageView.relocate(rectangle.getX(), rectangle.getY());
 
     }
 
@@ -161,8 +166,27 @@ public abstract class SpriteBase extends Pane {
     // TODO: per-pixel-collision
     public boolean collidesWith(SpriteBase otherSprite) {
 
-        return (otherSprite.x + otherSprite.width >= x && otherSprite.y + otherSprite.height >= y && otherSprite.x <= x + Settings.TILE_WIDTH && otherSprite.y <= y + Settings.TILE_HEIGHT);
+        return (otherSprite.rectangle.getX() + otherSprite.rectangle.getWidth() >= rectangle.getX() && otherSprite.rectangle.getY() + otherSprite.rectangle.getHeight() >= rectangle.getY() && otherSprite.rectangle.getX() <= rectangle.getX() + Settings.TILE_WIDTH && otherSprite.rectangle.getY() <= rectangle.getY() + Settings.TILE_HEIGHT);
 
+    }
+    public boolean collidesWithCell(Position cell) {
+
+        return (cell.getX() + cell.getWidth() >= rectangle.getX() && cell.getY() + cell.getHeight() >= rectangle.getY() && cell.getX() <= rectangle.getX() + Settings.TILE_WIDTH && cell.getY() <= rectangle.getY() + Settings.TILE_HEIGHT);
+
+    }
+    public boolean attackCollides( SpriteBase otherSprite) {
+        //Right Attack Check
+        if(Player.animation.getOffSetY() == 704) return ((rectangle.getY()+Settings.TILE_HEIGHT)/2 <= otherSprite.rectangle.getY() && (rectangle.getY()+Settings.TILE_HEIGHT)/2 <= (otherSprite.rectangle.getY()+otherSprite.rectangle.getHeight()) && (rectangle.getX()+Settings.TILE_WIDTH) <otherSprite.rectangle.getX() && (rectangle.getX()+Settings.TILE_WIDTH) > otherSprite.rectangle.getX()-Settings.TILE_WIDTH-5 );
+        //Left Attack Check
+        if(Player.animation.getOffSetY() == 576) return ((rectangle.getY()+Settings.TILE_HEIGHT)/2 <= otherSprite.rectangle.getY() && (rectangle.getY()+Settings.TILE_HEIGHT)/2 <= (otherSprite.rectangle.getY()+otherSprite.rectangle.getHeight()) && x > otherSprite.rectangle.getX()+otherSprite.rectangle.getWidth() && x < otherSprite.rectangle.getX()+otherSprite.rectangle.getWidth()+Settings.TILE_WIDTH+5);
+        //Top Attack Check
+        if(Player.animation.getOffSetY() == 512) return (rectangle.getY() >= otherSprite.rectangle.getY()+otherSprite.rectangle.getHeight() && rectangle.getY() <= otherSprite.rectangle.getY()+otherSprite.rectangle.getHeight()+Settings.TILE_HEIGHT+5 && (rectangle.getX()+(rectangle.getX()+Settings.TILE_WIDTH))/2 <= (otherSprite.rectangle.getX()+otherSprite.rectangle.getWidth()) && (rectangle.getX()+(rectangle.getX()+Settings.TILE_WIDTH))/2 >= otherSprite.rectangle.getX());
+        //Bot Attack Check
+        if(Player.animation.getOffSetY() == 640) return (rectangle.getY() <= otherSprite.rectangle.getY() && rectangle.getY() >= otherSprite.rectangle.getY()-Settings.TILE_HEIGHT-20 && (rectangle.getX()+(rectangle.getX()+Settings.TILE_WIDTH))/2 <= (otherSprite.rectangle.getX()+otherSprite.rectangle.getWidth()) && (rectangle.getX()+(rectangle.getX()+Settings.TILE_WIDTH))/2 >= otherSprite.rectangle.getX());
+        else return false;
+    }
+    public boolean spellCollides(Spell spell,Player player){
+        return ((player.getX() - spell.x+spell.x)+ spell.width >= x && (player.getY() - spell.y+spell.y) + spell.height >= y && (player.getX() - spell.x+spell.x) <= x + Settings.TILE_WIDTH && (player.getY() - spell.y+spell.y) <= y + Settings.TILE_HEIGHT);
     }
 
     /**

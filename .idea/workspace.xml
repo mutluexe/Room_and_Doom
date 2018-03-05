@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef4dc49c-59c7-4c78-8df8-fdf7b57aa148" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/sample/Spell.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Enemy.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Enemy.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Main$1.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Main$1.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Main.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Player.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Player.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Settings.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Settings.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/SpriteBase.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/SpriteBase.class" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Enemy.java" afterPath="$PROJECT_DIR$/src/sample/Enemy.java" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
       <change beforePath="$PROJECT_DIR$/src/sample/Player.java" afterPath="$PROJECT_DIR$/src/sample/Player.java" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Settings.java" afterPath="$PROJECT_DIR$/src/sample/Settings.java" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SpriteBase.java" afterPath="$PROJECT_DIR$/src/sample/SpriteBase.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,21 +29,33 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="176" column="64" lean-forward="true" selection-start-line="176" selection-start-column="64" selection-end-line="176" selection-end-column="64" />
+            <state relative-caret-position="2562">
+              <caret line="139" column="9" lean-forward="false" selection-start-line="139" selection-start-column="9" selection-end-line="139" selection-end-column="9" />
               <folding>
-                <element signature="e#1513#2388#0" expanded="true" />
-                <element signature="e#2387#2388#0" expanded="true" />
+                <element signature="method#createScoreLayer#0;class#Main#0" expanded="false" />
+                <element signature="method#createPlayers#0;class#Main#0" expanded="false" />
+                <element signature="method#createEnemy#0;class#Main#0" expanded="false" />
+                <element signature="method#checkCollisionWithEnemy#0;class#Main#0" expanded="false" />
+                <element signature="method#checkAttackCollisionWithEnemy#0;class#Main#0" expanded="false" />
+                <element signature="method#checkCollisionWithCell#0;class#Main#0" expanded="false" />
+                <element signature="method#checkCollisionWithSpell#0;class#Main#0" expanded="false" />
+                <element signature="method#updateScore#0;class#Main#0" expanded="false" />
+                <element signature="method#createObstacles#0;class#Main#0" expanded="false" />
+                <element signature="method#initObstacles#0;class#Main#0" expanded="false" />
+                <element signature="e#8430#8476#0" expanded="false" />
+                <element signature="method#isObstacle#0;class#Main#0" expanded="false" />
+                <element signature="e#10040#10041#0" expanded="true" />
+                <element signature="e#10068#10069#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Player.java">
+      <file leaf-file-name="Enemy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1575">
-              <caret line="142" column="1" lean-forward="true" selection-start-line="142" selection-start-column="1" selection-end-line="142" selection-end-column="1" />
+            <state relative-caret-position="147">
+              <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -44,24 +64,46 @@
       <file leaf-file-name="SpriteBase.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/SpriteBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2365">
-              <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-              <folding />
+            <state relative-caret-position="2121">
+              <caret line="135" column="7" lean-forward="false" selection-start-line="135" selection-start-column="7" selection-end-line="135" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#collidesWith#0;class#SpriteBase#0" expanded="false" />
+                <element signature="method#attackCollides#0;class#SpriteBase#0" expanded="false" />
+                <element signature="method#spellCollides#0;class#SpriteBase#0" expanded="false" />
+                <element signature="e#6106#6107#0" expanded="true" />
+                <element signature="e#6150#6151#0" expanded="true" />
+                <element signature="e#6215#6216#0" expanded="true" />
+                <element signature="e#6243#6244#0" expanded="true" />
+                <element signature="e#6347#6348#0" expanded="true" />
+                <element signature="e#6381#6382#0" expanded="true" />
+                <element signature="e#6483#6484#0" expanded="true" />
+                <element signature="e#6519#6520#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Enemy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Enemy.java">
+      <file leaf-file-name="Spell.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Spell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="294">
+              <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,7 +116,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/map/Cell.java" />
+        <option value="$PROJECT_DIR$/src/sample/Spell.java" />
+        <option value="$PROJECT_DIR$/src/sample/Player.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/SpriteBase.java" />
+        <option value="$PROJECT_DIR$/src/sample/Enemy.java" />
       </list>
     </option>
   </component>
@@ -98,16 +145,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Room_and_Doom" type="b2602c69:ProjectViewProjectNode" />
               <item name="Room_and_Doom" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Room_and_Doom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Room_and_Doom" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Room_and_Doom" type="b2602c69:ProjectViewProjectNode" />
@@ -124,123 +172,19 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/Room_and_Doom/sample/Main$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/Room_and_Doom/sample/Main.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/sample/Main.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kenan\IdeaProjects\Room_and_Doom\resources" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -387,14 +331,14 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5042965" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295325" sideWeight="0.49570355" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.49785176" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13748658" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20730397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -402,50 +346,54 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26100966" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-    </layout>
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
-          <folding>
-            <element signature="e#1513#2388#0" expanded="true" />
-            <element signature="e#2387#2388#0" expanded="true" />
-          </folding>
-        </state>
+    <entry file="file://$PROJECT_DIR$/resources/spritesheet.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
@@ -453,17 +401,31 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1513#2388#0" expanded="true" />
-            <element signature="e#2387#2388#0" expanded="true" />
+            <element signature="method#createScoreLayer#0;class#Main#0" expanded="false" />
+            <element signature="method#createPlayers#0;class#Main#0" expanded="false" />
+            <element signature="method#createEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkAttackCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithCell#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithSpell#0;class#Main#0" expanded="false" />
+            <element signature="method#updateScore#0;class#Main#0" expanded="false" />
+            <element signature="method#createObstacles#0;class#Main#0" expanded="false" />
+            <element signature="method#initObstacles#0;class#Main#0" expanded="false" />
+            <element signature="e#8430#8476#0" expanded="false" />
+            <element signature="method#isObstacle#0;class#Main#0" expanded="false" />
+            <element signature="e#10040#10041#0" expanded="true" />
+            <element signature="e#10068#10069#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/Spell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="142" column="1" lean-forward="true" selection-start-line="142" selection-start-column="1" selection-end-line="142" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="315">
+          <caret line="19" column="54" lean-forward="true" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -477,19 +439,420 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/SpriteBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2365">
-          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        <state relative-caret-position="2541">
+          <caret line="182" column="182" lean-forward="true" selection-start-line="182" selection-start-column="182" selection-end-line="182" selection-end-column="182" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#collidesWith#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#attackCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#spellCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="e#6106#6107#0" expanded="true" />
+            <element signature="e#6150#6151#0" expanded="true" />
+            <element signature="e#6215#6216#0" expanded="true" />
+            <element signature="e#6243#6244#0" expanded="true" />
+            <element signature="e#6347#6348#0" expanded="true" />
+            <element signature="e#6381#6382#0" expanded="true" />
+            <element signature="e#6483#6484#0" expanded="true" />
+            <element signature="e#6519#6520#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/conjure_ball_lightning_old.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/map/Position.java" />
+    <entry file="file://$PROJECT_DIR$/src/map/Grid.java" />
+    <entry file="file://$PROJECT_DIR$/src/map/Cell.java" />
+    <entry file="file://$PROJECT_DIR$/src/sample/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="176" column="64" lean-forward="true" selection-start-line="176" selection-start-column="64" selection-end-line="176" selection-end-column="64" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1513#2388#0" expanded="true" />
-            <element signature="e#2387#2388#0" expanded="true" />
+            <element signature="method#createScoreLayer#0;class#Main#0" expanded="false" />
+            <element signature="method#createPlayers#0;class#Main#0" expanded="false" />
+            <element signature="method#createEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkAttackCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithCell#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithSpell#0;class#Main#0" expanded="false" />
+            <element signature="method#updateScore#0;class#Main#0" expanded="false" />
+            <element signature="method#createObstacles#0;class#Main#0" expanded="false" />
+            <element signature="method#initObstacles#0;class#Main#0" expanded="false" />
+            <element signature="e#8430#8476#0" expanded="false" />
+            <element signature="method#isObstacle#0;class#Main#0" expanded="false" />
+            <element signature="e#10040#10041#0" expanded="true" />
+            <element signature="e#10068#10069#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Spell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="19" column="63" lean-forward="true" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SpriteBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2793">
+          <caret line="179" column="26" lean-forward="true" selection-start-line="179" selection-start-column="26" selection-end-line="179" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#collidesWith#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#attackCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#spellCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="e#6106#6107#0" expanded="true" />
+            <element signature="e#6150#6151#0" expanded="true" />
+            <element signature="e#6215#6216#0" expanded="true" />
+            <element signature="e#6243#6244#0" expanded="true" />
+            <element signature="e#6347#6348#0" expanded="true" />
+            <element signature="e#6381#6382#0" expanded="true" />
+            <element signature="e#6483#6484#0" expanded="true" />
+            <element signature="e#6519#6520#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/map/Position.java" />
+    <entry file="file://$PROJECT_DIR$/src/map/Grid.java" />
+    <entry file="file://$PROJECT_DIR$/src/map/Cell.java" />
+    <entry file="file://$PROJECT_DIR$/resources/enemy.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#createScoreLayer#0;class#Main#0" expanded="false" />
+            <element signature="method#createPlayers#0;class#Main#0" expanded="false" />
+            <element signature="method#createEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkAttackCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithCell#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithSpell#0;class#Main#0" expanded="false" />
+            <element signature="method#updateScore#0;class#Main#0" expanded="false" />
+            <element signature="method#createObstacles#0;class#Main#0" expanded="false" />
+            <element signature="method#initObstacles#0;class#Main#0" expanded="false" />
+            <element signature="e#8430#8476#0" expanded="false" />
+            <element signature="method#isObstacle#0;class#Main#0" expanded="false" />
+            <element signature="e#10040#10041#0" expanded="true" />
+            <element signature="e#10068#10069#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SpriteBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2625">
+          <caret line="169" column="60" lean-forward="false" selection-start-line="169" selection-start-column="60" selection-end-line="169" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#collidesWith#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#attackCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#spellCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="e#6106#6107#0" expanded="true" />
+            <element signature="e#6150#6151#0" expanded="true" />
+            <element signature="e#6215#6216#0" expanded="true" />
+            <element signature="e#6243#6244#0" expanded="true" />
+            <element signature="e#6347#6348#0" expanded="true" />
+            <element signature="e#6381#6382#0" expanded="true" />
+            <element signature="e#6483#6484#0" expanded="true" />
+            <element signature="e#6519#6520#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/enemy.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="28" column="60" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3465">
+          <caret line="165" column="39" lean-forward="true" selection-start-line="165" selection-start-column="39" selection-end-line="165" selection-end-column="39" />
+          <folding>
+            <element signature="method#createScoreLayer#0;class#Main#0" expanded="false" />
+            <element signature="method#createPlayers#0;class#Main#0" expanded="false" />
+            <element signature="method#createEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkAttackCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithCell#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithSpell#0;class#Main#0" expanded="false" />
+            <element signature="method#updateScore#0;class#Main#0" expanded="false" />
+            <element signature="method#createObstacles#0;class#Main#0" expanded="false" />
+            <element signature="method#initObstacles#0;class#Main#0" expanded="false" />
+            <element signature="e#8430#8476#0" expanded="false" />
+            <element signature="method#isObstacle#0;class#Main#0" expanded="false" />
+            <element signature="e#10040#10041#0" expanded="true" />
+            <element signature="e#10068#10069#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SpriteBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3591">
+          <caret line="171" column="100" lean-forward="false" selection-start-line="171" selection-start-column="100" selection-end-line="171" selection-end-column="100" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#collidesWith#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#attackCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#spellCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="e#6106#6107#0" expanded="true" />
+            <element signature="e#6150#6151#0" expanded="true" />
+            <element signature="e#6215#6216#0" expanded="true" />
+            <element signature="e#6243#6244#0" expanded="true" />
+            <element signature="e#6347#6348#0" expanded="true" />
+            <element signature="e#6381#6382#0" expanded="true" />
+            <element signature="e#6483#6484#0" expanded="true" />
+            <element signature="e#6519#6520#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#createScoreLayer#0;class#Main#0" expanded="false" />
+            <element signature="method#createPlayers#0;class#Main#0" expanded="false" />
+            <element signature="method#createEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkAttackCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithCell#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithSpell#0;class#Main#0" expanded="false" />
+            <element signature="method#updateScore#0;class#Main#0" expanded="false" />
+            <element signature="method#createObstacles#0;class#Main#0" expanded="false" />
+            <element signature="method#initObstacles#0;class#Main#0" expanded="false" />
+            <element signature="e#8430#8476#0" expanded="false" />
+            <element signature="method#isObstacle#0;class#Main#0" expanded="false" />
+            <element signature="e#10040#10041#0" expanded="true" />
+            <element signature="e#10068#10069#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SpriteBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2646">
+          <caret line="170" column="93" lean-forward="false" selection-start-line="170" selection-start-column="93" selection-end-line="170" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#collidesWith#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#attackCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#spellCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="e#6106#6107#0" expanded="true" />
+            <element signature="e#6150#6151#0" expanded="true" />
+            <element signature="e#6215#6216#0" expanded="true" />
+            <element signature="e#6243#6244#0" expanded="true" />
+            <element signature="e#6347#6348#0" expanded="true" />
+            <element signature="e#6381#6382#0" expanded="true" />
+            <element signature="e#6483#6484#0" expanded="true" />
+            <element signature="e#6519#6520#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/enemy.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/border.jpg" />
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.base/javafx/util/Duration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6914">
+          <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/conjure_ball_lightning_old.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/map/Grid.java" />
+    <entry file="file://$PROJECT_DIR$/src/map/Cell.java" />
+    <entry file="file://$PROJECT_DIR$/src/map/Position.java" />
+    <entry file="file://$PROJECT_DIR$/src/sample/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2793">
+          <caret line="137" column="42" lean-forward="true" selection-start-line="137" selection-start-column="42" selection-end-line="137" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Input.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1381">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SpriteAnimation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/spritesheet.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SpriteBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2121">
+          <caret line="135" column="7" lean-forward="false" selection-start-line="135" selection-start-column="7" selection-end-line="135" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#collidesWith#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#attackCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="method#spellCollides#0;class#SpriteBase#0" expanded="false" />
+            <element signature="e#6106#6107#0" expanded="true" />
+            <element signature="e#6150#6151#0" expanded="true" />
+            <element signature="e#6215#6216#0" expanded="true" />
+            <element signature="e#6243#6244#0" expanded="true" />
+            <element signature="e#6347#6348#0" expanded="true" />
+            <element signature="e#6381#6382#0" expanded="true" />
+            <element signature="e#6483#6484#0" expanded="true" />
+            <element signature="e#6519#6520#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Spell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2562">
+          <caret line="139" column="9" lean-forward="false" selection-start-line="139" selection-start-column="9" selection-end-line="139" selection-end-column="9" />
+          <folding>
+            <element signature="method#createScoreLayer#0;class#Main#0" expanded="false" />
+            <element signature="method#createPlayers#0;class#Main#0" expanded="false" />
+            <element signature="method#createEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkAttackCollisionWithEnemy#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithCell#0;class#Main#0" expanded="false" />
+            <element signature="method#checkCollisionWithSpell#0;class#Main#0" expanded="false" />
+            <element signature="method#updateScore#0;class#Main#0" expanded="false" />
+            <element signature="method#createObstacles#0;class#Main#0" expanded="false" />
+            <element signature="method#initObstacles#0;class#Main#0" expanded="false" />
+            <element signature="e#8430#8476#0" expanded="false" />
+            <element signature="method#isObstacle#0;class#Main#0" expanded="false" />
+            <element signature="e#10040#10041#0" expanded="true" />
+            <element signature="e#10068#10069#0" expanded="true" />
           </folding>
         </state>
       </provider>
