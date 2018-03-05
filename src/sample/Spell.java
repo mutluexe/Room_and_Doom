@@ -9,8 +9,6 @@ import javafx.util.Duration;
 public class Spell extends SpriteBase {
     TranslateTransition translateTransition;
 
-
-
     public Spell(Pane layer, Image image, double x, double y, double damage) {
         super(layer, image, x, y, 1, 1,1, damage);
 
@@ -21,6 +19,7 @@ public class Spell extends SpriteBase {
         translateTransition.setToY(player.getY() - y);
         translateTransition.setCycleCount(Timeline.INDEFINITE);
         translateTransition.play();
+
 
     }
 

@@ -60,7 +60,7 @@ public class Main extends Application {
 
         Group root = new Group();
 
-        grid=new Grid();//Obstacle's grid
+        grid = new Grid();//Obstacle's grid
 
         // create layers
         playfieldLayout = new Pane();
@@ -70,7 +70,7 @@ public class Main extends Application {
         root.getChildren().add(scoreLayout);
 
 
-        initObstacles();//first initiliaze after create
+        initObstacles();//first initialize after create
         createObstacles();
 
         scene = new Scene(root, Settings.SCENE_WIDTH, Settings.SCENE_HEIGHT);
@@ -96,7 +96,6 @@ public class Main extends Application {
                 // movement
                 players.forEach(sprite -> sprite.move());
 
-
                 // check collisions
                 checkCollisionWithEnemy();
                 enemyBlock();
@@ -109,16 +108,20 @@ public class Main extends Application {
                 // update sprites in scene
                 players.forEach(sprite -> sprite.updateUI());
                 enemies.forEach(sprite -> sprite.updateUI());
-                spells.forEach(sprite -> sprite.translate(player));
+                // spells.forEach(sprite -> sprite.translate(player));
+
+                //check if player alive
+                players.forEach(sprite -> sprite.checkAlive());
 
                 // check if sprite can be removed
                 enemies.forEach(sprite -> sprite.checkRemovability());
 
                 // remove removables from list, layer, etc
                 removeSprites(enemies);
+
                 // update score, health, etc
                 updateScore();
-
+                player.health--;
 
             }
 
@@ -264,9 +267,8 @@ public class Main extends Application {
     private void updateScore() {
         if (attackCollision && input.isAttack() && !Input.getIsAttacking()) {
             Input.setIsAttacking(true);
-            System.out.println(enemy.health);
             enemy.getDamagedBy(player);//Enemy's health decreasing
-
+            System.out.println(enemy.health);
         } else {
             collisionText.setText("");
         }
@@ -286,21 +288,19 @@ public class Main extends Application {
 
                 //Check if not boundary
 
-                //BURAYI TAM ANLAMADIM???????
                 if (i != Settings.COLUMN_CELL_COUNT - 1 && j != Settings.ROW_CELL_COUNT - 1 && i != 0 && j != 0) {
                     if (i == 1 && j == 1)
                         type = 0;
-                    else if (isObstacle(position))//Bu pozisyonda obtacle için oyuk varsa border ı koy demek
+                    else if (isObstacle(position))
                         type = 1;
 
                 }
-
 
                 Cell cell = new Cell(position, type);
                 Cells.add(cell);
                 grid.addCell(cell);//Cell was added to grid
 
-                playfieldLayout.getChildren().add(cell.getNode());//Mevcut Layouta gömdüm
+                playfieldLayout.getChildren().add(cell.getNode());//Added to the layout
             }
 
         }

@@ -142,7 +142,7 @@ public abstract class SpriteBase extends Pane {
     }
 
     public boolean isAlive() {
-        return Double.compare(health, 0) > 0;
+        return health != 0;
     }
 
     public ImageView getView() {
