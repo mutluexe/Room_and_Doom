@@ -7,6 +7,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import sample.*;
 
+import java.util.ArrayList;
+
 public class Cell {
 
 	public int type;
@@ -14,11 +16,13 @@ public class Cell {
 	public Node node;
 	public ImageView BORDER;
 
+
 	
 	public Cell(Position position,int type){
 		
 		this.position = position;
 		this.type = type;
+
 
 	}
 
@@ -47,7 +51,7 @@ public class Cell {
 			//If we change position.height and width we coul hava kesik kesik lines
 			//For example x=1 others same and position.height 15
 
-			((Rectangle)node).setFill(Color.GREENYELLOW);//if it's null color greenyellow
+			((Rectangle)node).setFill(Color.PINK);//if it's null color greenyellow
 			//If backround was prepared we could use that
 		}
 
