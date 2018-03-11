@@ -14,6 +14,9 @@ public class Enemy extends SpriteBase {
     public void checkRemovability() {
 
         //Here we will set when the sprite remove
+        if(this.health <= 0) {
+            setRemovable(true);
+        }
     }
     public boolean isAlive(){
         return true;

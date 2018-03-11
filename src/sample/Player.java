@@ -22,10 +22,15 @@ public class Player extends SpriteBase {
     double speed;
     static SpriteAnimation animation;
     static SpriteAnimation attackAnimation;
+    public SpriteAnimation deathAnimation;
 
     public Player(Pane layer, Image image, double health, double damage, double speed, Input input) {
 
+<<<<<<< HEAD
         super(layer, image, 200, 400, 4, 4, health, damage);
+=======
+        super(layer, image, 200, 0, 4, 4, health, damage);
+>>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
 
         this.speed = speed;
         this.input = input;
@@ -36,10 +41,15 @@ public class Player extends SpriteBase {
         //Setting animations
         animation = new SpriteAnimation(imageView, Duration.millis(800), 9, 9, 0, 0, 64, 64);
         attackAnimation = new SpriteAnimation(imageView, Duration.millis(1000), 8, 8, 0, 0, 64, 64);
+        deathAnimation = new SpriteAnimation(imageView, Duration.millis(1200), 6, 6, 0, 1280, 64, 64);
+
+        //Animation cycles
         animation.setCycleCount(Animation.INDEFINITE);
+        deathAnimation.setCycleCount(1);
         attackAnimation.setCycleCount(1);
         attackAnimation.setOnFinished(e -> Input.setIsAttacking(false)); //Everytime when cycle finished it set's the value 0
 
+<<<<<<< HEAD
         rectangle.setHeight(imageView.getViewport().getHeight());
         rectangle.setWidth(imageView.getViewport().getWidth());
 
@@ -48,8 +58,20 @@ public class Player extends SpriteBase {
 
 
 
+=======
+        init();
+
+>>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
     }
 
+    public void checkAlive(){
+        if(!this.isAlive()){
+            deathAnimation.play();
+            animation.stop();
+            attackAnimation.stop();
+            stopMovement();
+        }
+    }
 
     private void init() {
         // calculate movement bounds of the character
@@ -150,7 +172,6 @@ public class Player extends SpriteBase {
 
     @Override
     public void checkRemovability() {
-        // TODO Auto-generated method stub
-    }
 
+        }
 }
