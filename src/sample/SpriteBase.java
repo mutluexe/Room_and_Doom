@@ -3,6 +3,11 @@ package sample;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
+import map.Cell;
+import map.Position;
+
+
 
 public abstract class SpriteBase extends Pane {
     //VARİABLE LAR DÜZENLENMELİ ÇOK KARIŞIK.
@@ -15,12 +20,14 @@ public abstract class SpriteBase extends Pane {
 
     double x;
     double y;
+    Rectangle rectangle;
 
     double dx;
     double dy;
 
     double health;
     double damage;
+    double maxHealth;
 
     boolean removable = false;
 
@@ -28,6 +35,7 @@ public abstract class SpriteBase extends Pane {
     double height;
 
     boolean canMove = true;
+    HealthBars healthBar;
 
 
     public SpriteBase(Pane layer, Image image, double x, double y, double dx, double dy, double health, double damage) {
@@ -36,24 +44,29 @@ public abstract class SpriteBase extends Pane {
         this.image = image;
         this.x = x;
         this.y = y;
+        this.width = image.getWidth();
+        this.height = image.getHeight();
+        rectangle = new Rectangle(x,y,width,height);
+
         this.dx = dx;
         this.dy = dy;
 
         this.health = health;
         this.damage = damage;
+        maxHealth = health;
+
 
         this.imageView = new ImageView(image);
-        this.imageView.relocate(x, y);
+        this.imageView.relocate(rectangle.getX(), rectangle.getY());
 
-        this.width = image.getWidth();
-        this.height = image.getHeight();
+        healthBar = new HealthBars(layer,maxHealth,health,x,y+10);
 
         addToLayer();
 
     }
 
     public void addToLayer() {
-        this.layer.getChildren().addAll(this.imageView);
+        this.layer.getChildren().addAll(imageView);
 
     }
 
@@ -131,8 +144,8 @@ public abstract class SpriteBase extends Pane {
         if (!canMove)
             return;
 
-        x += dx;
-        y += dy;
+        rectangle.setX(rectangle.getX()+dx);
+        rectangle.setY(rectangle.getY()+dy);
 
     }
 
@@ -145,8 +158,10 @@ public abstract class SpriteBase extends Pane {
     }
 
     public void updateUI() {
+        healthBar.UpdateUI(health,maxHealth,rectangle.getWidth());
+        healthBar.healthBar.relocate(rectangle.getX(),rectangle.getY()+5);
 
-        imageView.relocate(x, y);
+        imageView.relocate(rectangle.getX(), rectangle.getY());
 
     }
 
@@ -161,9 +176,26 @@ public abstract class SpriteBase extends Pane {
     // TODO: per-pixel-collision
     public boolean collidesWith(SpriteBase otherSprite) {
 
-        return (otherSprite.x + otherSprite.width >= x && otherSprite.y + otherSprite.height >= y && otherSprite.x <= x + Settings.TILE_WIDTH && otherSprite.y <= y + Settings.TILE_HEIGHT);
+        return rectangle.getBoundsInParent().intersects(otherSprite.rectangle.getBoundsInParent());
+        //(otherSprite.rectangle.getX() + otherSprite.rectangle.getWidth() >= rectangle.getX() && otherSprite.rectangle.getY() + otherSprite.rectangle.getHeight() >= rectangle.getY() && otherSprite.rectangle.getX() <= rectangle.getX() + Settings.TILE_WIDTH && otherSprite.rectangle.getY() <= rectangle.getY() + Settings.TILE_HEIGHT);
 
     }
+    public boolean collidesWithCell(Position cell) {
+
+        return (cell.getX() + cell.getWidth() >= rectangle.getX() && cell.getY() + cell.getHeight() >= rectangle.getY() && cell.getX() <= rectangle.getX() + rectangle.getWidth() && cell.getY() <= rectangle.getY() + rectangle.getHeight());
+    }
+    public boolean attackCollides( SpriteBase otherSprite) {
+        //Right Attack Check
+        if(Player.animation.getOffSetY() == 704) return ((rectangle.getY()+rectangle.getHeight())/2 <= otherSprite.rectangle.getY() && (rectangle.getY()+rectangle.getHeight())/2 <= (otherSprite.rectangle.getY()+otherSprite.rectangle.getHeight()) && (rectangle.getX()+rectangle.getWidth()) <otherSprite.rectangle.getX() && (rectangle.getX()+rectangle.getWidth()) > otherSprite.rectangle.getX()-rectangle.getWidth()-5 );
+        //Left Attack Check
+        if(Player.animation.getOffSetY() == 576) return ((rectangle.getY()+rectangle.getHeight())/2 <= otherSprite.rectangle.getY() && (rectangle.getY()+rectangle.getHeight())/2 <= (otherSprite.rectangle.getY()+otherSprite.rectangle.getHeight()) && rectangle.getX() > otherSprite.rectangle.getX()+otherSprite.rectangle.getWidth() && rectangle.getX() < otherSprite.rectangle.getX()+otherSprite.rectangle.getWidth()+rectangle.getWidth()+5);
+        //Top Attack Check
+        if(Player.animation.getOffSetY() == 512) return (rectangle.getY() >= otherSprite.rectangle.getY()+otherSprite.rectangle.getHeight() && rectangle.getY() <= otherSprite.rectangle.getY()+otherSprite.rectangle.getHeight()+rectangle.getHeight()+5 && (rectangle.getX()+(rectangle.getX()+rectangle.getWidth()))/2 <= (otherSprite.rectangle.getX()+otherSprite.rectangle.getWidth()) && (rectangle.getX()+(rectangle.getX()+rectangle.getWidth()))/2 >= otherSprite.rectangle.getX());
+        //Bot Attack Check
+        if(Player.animation.getOffSetY() == 640) return (rectangle.getY() <= otherSprite.rectangle.getY() && rectangle.getY() >= otherSprite.rectangle.getY()-rectangle.getHeight()-20 && (rectangle.getX()+(rectangle.getX()+rectangle.getHeight()))/2 <= (otherSprite.rectangle.getX()+otherSprite.rectangle.getWidth()) && (rectangle.getX()+(rectangle.getX()+rectangle.getWidth()))/2 >= otherSprite.rectangle.getX());
+        else return false;
+    }
+
 
     /**
      * Reduce health by the amount of damage that the given sprite can inflict

@@ -12,6 +12,10 @@ public class Enemy extends SpriteBase {
 
     @Override
     public void checkRemovability() {
+
         //Here we will set when the sprite remove
+    }
+    public boolean isAlive(){
+        return true;
     }
 }

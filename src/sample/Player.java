@@ -18,26 +18,36 @@ public class Player extends SpriteBase {
 
     Input input;
 
+
     double speed;
     static SpriteAnimation animation;
     static SpriteAnimation attackAnimation;
 
     public Player(Pane layer, Image image, double health, double damage, double speed, Input input) {
 
-        super(layer, image, 100, 100, 4, 4, health, damage);
+        super(layer, image, 200, 400, 4, 4, health, damage);
 
         this.speed = speed;
         this.input = input;
 
         //Here we crop the style sheet's specific part
         this.imageView.setViewport(new Rectangle2D(0, 0, 64, 64));
+
         //Setting animations
         animation = new SpriteAnimation(imageView, Duration.millis(800), 9, 9, 0, 0, 64, 64);
         attackAnimation = new SpriteAnimation(imageView, Duration.millis(1000), 8, 8, 0, 0, 64, 64);
         animation.setCycleCount(Animation.INDEFINITE);
         attackAnimation.setCycleCount(1);
-        attackAnimation.setOnFinished(e -> Input.setIsAttacking(false)); //Every time when cycle finished it set's the value 0
+        attackAnimation.setOnFinished(e -> Input.setIsAttacking(false)); //Everytime when cycle finished it set's the value 0
+
+        rectangle.setHeight(imageView.getViewport().getHeight());
+        rectangle.setWidth(imageView.getViewport().getWidth());
+
+
         init();
+
+
+
     }
 
 
@@ -45,11 +55,12 @@ public class Player extends SpriteBase {
         // calculate movement bounds of the character
         // allow character can not to be outside of the screen
         characterMinX = 0;
-        characterMaxX = Settings.SCENE_WIDTH - Settings.TILE_WIDTH;
+        characterMaxX = Settings.SCENE_WIDTH - rectangle.getWidth();
         characterMinY = 0;
-        characterMaxY = Settings.SCENE_HEIGHT - Settings.TILE_HEIGHT;
+        characterMaxY = Settings.SCENE_HEIGHT - rectangle.getHeight();
 
     }
+
 
     public void processInput() {
 
@@ -122,18 +133,20 @@ public class Player extends SpriteBase {
     private void checkBounds() {
 
         // vertical
-        if (Double.compare(y, characterMinY) < 0) {
-            y = characterMinY;
+        if (Double.compare(rectangle.getY(), characterMinY) < 0) {
+            rectangle.setY(characterMinY);
         } else if (Double.compare(y, characterMaxY) > 0) {
-            y = characterMaxY;
+            rectangle.setY(characterMaxY);
         }
         // horizontal
-        if (Double.compare(x, characterMinX) < 0) {
-            x = characterMinX;
+        if (Double.compare(rectangle.getX(), characterMinX) < 0) {
+            rectangle.setX(characterMinX);
         } else if (Double.compare(x, characterMaxX) > 0) {
-            x = characterMaxX;
+            rectangle.setX(characterMaxX);
         }
+
     }
+
 
     @Override
     public void checkRemovability() {
