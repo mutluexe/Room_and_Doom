@@ -8,62 +8,40 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-<<<<<<< HEAD
-import javafx.util.Duration;
-=======
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
 import map.*;
 
-
-
 import java.util.*;
-import java.util.concurrent.ScheduledFuture;
 
 public class Main extends Application {
 
     Input input;
     Player player;
     Enemy enemy;
-<<<<<<< HEAD
     Bullet bullet;
-=======
-    Spell spell;
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
-
+    Treasure treasure;
 
     public Grid grid;//Obstacle's grid
-
 
     Pane playfieldLayout;
     Pane scoreLayout;
 
     Image playerImage;
     Image enemyImage;
-<<<<<<< HEAD
     Image bulletImage;
-=======
-    Image spellImage;
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
+    Image treasureImage;
+    Image treasureOpenedImage;
+
 
     Scene scene;
 
     //Creating lists
     List<Player> players = new ArrayList<>();
     List<Enemy> enemies = new ArrayList<>();
-<<<<<<< HEAD
-    ArrayList<Cell> Cells = new ArrayList<>();
-    List<Bullet> bullets = new ArrayList<Bullet>();
-    Iterator<Bullet> bulletIterator = bullets.iterator();
-=======
-    List<Spell> spells = new ArrayList<>();
-    ArrayList<Cell> Cells = new ArrayList<>();
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
-
+    List<Cell> Cells = new ArrayList<>();
+    List<Bullet> bullets = new ArrayList<>();
+    List<Treasure> treasures = new ArrayList<>();
 
     ArrayList<Position> obstacles = new ArrayList<>();
 
@@ -76,40 +54,24 @@ public class Main extends Application {
     boolean collision = false;
     boolean attackCollision = false;
     boolean cellCollision = false;
-<<<<<<< HEAD
     boolean bulletCollision = false;
-
-=======
-    boolean spellCollision = false;
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
-
 
     @Override
     public void start(Stage primaryStage) {
 
         Group root = new Group();
 
-<<<<<<< HEAD
         grid=new Grid();//Obstacle's grid
-=======
-        grid = new Grid();//Obstacle's grid
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
 
         // create layers
         playfieldLayout = new Pane();
         scoreLayout = new Pane();
 
-
-
         root.getChildren().add(playfieldLayout);
         root.getChildren().add(scoreLayout);
 
 
-<<<<<<< HEAD
         initObstacles();//first initiliaze after create
-=======
-        initObstacles();//first initialize after create
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
         createObstacles();
 
         scene = new Scene(root, Settings.SCENE_WIDTH, Settings.SCENE_HEIGHT);
@@ -119,15 +81,9 @@ public class Main extends Application {
 
         //Calling our methods here
         loadGame();
-        createScoreLayer();
         createPlayers();
         createEnemy();
-        createSpell();
-
-
-
-
-
+        createTreasure();
 
         AnimationTimer gameLoop = new AnimationTimer() {
              private long lastUpdate =0;
@@ -136,9 +92,9 @@ public class Main extends Application {
 
             public void handle(long now) {
 
-                // player input
+                //input
                 players.forEach(sprite -> sprite.processInput());
-
+                treasures.forEach(sprite -> treasure.processInput());
                 // movement
                 players.forEach(sprite -> sprite.move());
 
@@ -148,50 +104,29 @@ public class Main extends Application {
                 enemyBlock();
                 checkAttackCollisionWithEnemy();
                 checkCollisionWithCell();
-                cellBlcok();
-<<<<<<< HEAD
+                cellBlock();
                 checkCollisionWithBullet();
-
-
-
-=======
-                //checkCollisionWithSpell();
-                removeSpell();
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
 
                 // update sprites in scene
                 players.forEach(sprite -> sprite.updateUI());
                 enemies.forEach(sprite -> sprite.updateUI());
-<<<<<<< HEAD
                 bullets.forEach(sprite -> sprite.updateUI());
 
+                // for enemy's attack (it shouldn't be called every frame so we should restrict it
                    if(now-lastUpdate >= 1000000000){
                        enemies.forEach(Enemy -> createBullet());
                        lastUpdate=now;
                    }
                 bulletRemove();
 
-
-=======
-                // spells.forEach(sprite -> sprite.translate(player));
-
-                //check if player alive
-                players.forEach(sprite -> sprite.checkAlive());
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
-
                 // check if sprite can be removed
                 enemies.forEach(sprite -> sprite.checkRemovability());
 
                 // remove removables from list, layer, etc
                 removeSprites(enemies);
-
                 // update score, health, etc
                 updateScore();
-<<<<<<< HEAD
 
-=======
-                player.health--;
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
 
             }
 
@@ -200,27 +135,15 @@ public class Main extends Application {
 
     }
     //Creating spell here
-<<<<<<< HEAD
 
-=======
-    private void createSpell() {
-        Image image = spellImage;
-        //Setting spells' qualities
-        spell = new Spell(playfieldLayout, image, enemy.getCenterX(), enemy.getCenterY(), 5);
-        //Add all spells in a list so it will be easier to work
-        spells.add(spell);
-    }
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
 
     //Image resources
     private void loadGame() {
         playerImage = new Image(getClass().getResource("/spritesheet.png").toExternalForm());
-        enemyImage = new Image(getClass().getResource("/enemy.png").toExternalForm());
-<<<<<<< HEAD
-        bulletImage = new Image(getClass().getResource("/conjure_ball_lightning_old.png").toExternalForm());
-=======
-        spellImage = new Image(getClass().getResource("/conjure_ball_lightning_old.png").toExternalForm());
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
+        enemyImage = new Image(getClass().getResource("/mageattack.png").toExternalForm());
+        bulletImage = new Image(getClass().getResource("/plasmaball.png").toExternalForm());
+        treasureImage = new Image(getClass().getResource("/treasure.png").toExternalForm());
+        treasureOpenedImage = new Image(getClass().getResource("/treasureOpened.png").toExternalForm());
 
     }
 
@@ -228,56 +151,28 @@ public class Main extends Application {
         if(collision){
             player.rectangle.setX(player.rectangle.getX()-player.getDx());
             player.rectangle.setY(player.rectangle.getY()-player.getDy());
-<<<<<<< HEAD
-=======
         }
     }
-    public void cellBlcok(){
+    public void cellBlock(){
         if(cellCollision){
             player.rectangle.setX(player.rectangle.getX()-player.getDx());
             player.rectangle.setY(player.rectangle.getY()-player.getDy());
         }
     }
-    public void removeSpell(){
-        if(spellCollision){
-            System.out.println(spellCollision);
-            System.out.println(player.health);
-            player.setHealth(player.getHealth()-spell.damage);
-            spell.removeFromLayer();
 
-
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
-        }
-
-    }
-    public void cellBlcok(){
-        if(cellCollision){
-            player.rectangle.setX(player.rectangle.getX()-player.getDx());
-            player.rectangle.setY(player.rectangle.getY()-player.getDy());
-        }
-    }
     public void bulletRemove() {
-        for (Bullet bullet : bullets) {
+        Iterator<Bullet> bulletIterator = bullets.iterator();
+        while (bulletIterator.hasNext()){
+            Bullet bullet = bulletIterator.next();
+
             if (bullet.BulletRemove) {
                 player.setHealth(player.getHealth()-enemy.getDamage());
                 System.out.println(player.getHealth());
-                playfieldLayout.getChildren().removeAll(bullet.bullet_Imageview,bullet.bullet_Node);
-                bullets.remove(bullet);
+                bulletIterator.remove();
             }}
 
         }
 
-
-
-
-
-
-    //Here just a temporary method we will change it to a health bar
-    private void createScoreLayer() {
-
-        // We need to set health bar here
-
-    }
     //Creating a player here
     private void createPlayers() {
         //For inputs
@@ -305,21 +200,30 @@ public class Main extends Application {
     public void createBullet(){
        {
             Image image = bulletImage;
-            bullet = new Bullet(image, new Circle(enemy.rectangle.getX(), enemy.rectangle.getY(), 15, Color.RED), enemy, player);
-            playfieldLayout.getChildren().add(bullet.bullet_Imageview);
+            bullet = new Bullet(image, new Circle(enemy.rectangle.getX()+enemy.rectangle.getWidth()/2,enemy.rectangle.getY()+enemy.rectangle.getHeight()/2, 1, Color.RED), enemy, player);
+            playfieldLayout.getChildren().add(bullet.bulletImageView);
+            bullet.layer = playfieldLayout;
             bullets.add(bullet);
-            bullet.pathTransitionBullets().play();
-
+            bullet.pathTransitionBullets(bullet).play();
+            enemy.attackAnimation(player);
+            bullet.bullet_Animation.play();
 
         }
     }
 
+    //Creating treasures here
+    private void createTreasure(){
+        //For inputs
+        input = new Input(scene);
+        input.addListeners();
 
+        Image image = treasureImage;
+        Image image_Opened = treasureOpenedImage;
 
+        treasure = new Treasure(playfieldLayout, image, image_Opened, 300, 500, input);
 
-
-
-
+        treasures.add(treasure);
+    }
 
 
     private void removeSprites(List<? extends SpriteBase> spriteList) {
@@ -331,6 +235,7 @@ public class Main extends Application {
 
                 // remove from layer
                 sprite.removeFromLayer();
+                sprite.layer.getChildren().remove(sprite.healthBar.imageView);
 
                 // remove from list
                 iterator.remove();
@@ -371,7 +276,6 @@ public class Main extends Application {
             }
         }
     }
-<<<<<<< HEAD
     private void checkCollisionWithBullet(){
         bulletCollision = false;
 
@@ -380,15 +284,6 @@ public class Main extends Application {
                 if(bullet.checkBulletCollision(player)){
                     bulletCollision = true;
                     bullet.BulletRemove =true;
-=======
-    private void checkCollisionWithSpell(){
-        spellCollision = false;
-
-        for (Player player: players){
-            for(Spell spell:spells){
-                if(player.spellCollides(spell,player)){
-                    spellCollision = true;
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
                 }
             }
         }
@@ -398,8 +293,9 @@ public class Main extends Application {
     private void updateScore() {
         if (attackCollision && input.isAttack() && !Input.getIsAttacking()) {
             Input.setIsAttacking(true);
-            enemy.getDamagedBy(player);//Enemy's health decreasing
             System.out.println(enemy.health);
+            enemy.getDamagedBy(player);//Enemy's health decreasing
+
         } else {
             collisionText.setText("");
         }
@@ -419,35 +315,19 @@ public class Main extends Application {
 
                 //Check if not boundary
 
-<<<<<<< HEAD
-                //BURAYI TAM ANLAMADIM???????
-                if (i != Settings.COLUMN_CELL_COUNT - 1 && j != Settings.ROW_CELL_COUNT - 1 && i != 0 && j != 0) {
-                    if (i == 1 && j == 1)
-                        type = 0;
-                    else if (isObstacle(position))//Bu pozisyonda obtacle için oyuk varsa border ı koy demek
-=======
                 if (i != Settings.COLUMN_CELL_COUNT - 1 && j != Settings.ROW_CELL_COUNT - 1 && i != 0 && j != 0) {
                     if (i == 1 && j == 1)
                         type = 0;
                     else if (isObstacle(position))
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
                         type = 1;
 
                 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
                 Cell cell = new Cell(position, type);
                 Cells.add(cell);
                 grid.addCell(cell);//Cell was added to grid
 
-<<<<<<< HEAD
-                playfieldLayout.getChildren().add(cell.getNode());//Mevcut Layouta gömdüm
-=======
-                playfieldLayout.getChildren().add(cell.getNode());//Added to the layout
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
+                playfieldLayout.getChildren().add(cell.getNode());
             }
 
         }
@@ -490,16 +370,9 @@ public class Main extends Application {
         obstacles.add(new Position(3, 7));
         obstacles.add(new Position(4, 7));
 
-
-
     }
 
-
     public  boolean isObstacle(Position position){
-<<<<<<< HEAD
-=======
-
->>>>>>> 3321901106b7324d79bae8a346263d07b902ec09
         for (int i =0;i< obstacles.size();i++){
             Position tmpPosition = obstacles.get(i);
             if (position.getRow() == tmpPosition.getRow() && position.getColumn() == tmpPosition.getColumn())
@@ -509,7 +382,6 @@ public class Main extends Application {
         return false;
 
     }//Controlling obstacle where the position
-
 
     public static void main(String[] args) {
         launch(args);

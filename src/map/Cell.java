@@ -11,62 +11,58 @@ import java.util.ArrayList;
 
 public class Cell {
 
-	public int type;
-	public Position position;
-	public Node node;
-	public ImageView BORDER;
+    public int type;
+    public Position position;
+    public Node node;
+    public ImageView BORDER;
+
+    public Cell(Position position, int type) {
+
+        this.position = position;
+        this.type = type;
+
+    }
+
+    public Node getNode() {
 
 
-	
-	public Cell(Position position,int type){
-		
-		this.position = position;
-		this.type = type;
+        if (type == 1) {//1 represents there are obstacles
 
+            Settings.BorderImage = new Image(getClass().getResource("/border.jpg").toExternalForm());
 
-	}
+            BORDER = new ImageView(Settings.BorderImage);//Initializing imageView
 
-	public Node getNode(){
+            BORDER.setFitWidth(position.width);//burası engellerin oradaki oyuklara göre resmi uyduryor
+            BORDER.setFitHeight(position.height);
 
+            BORDER.setX(position.x + position.width / 2 - position.width / 2);
+            BORDER.setY(position.y + position.height / 2 - position.height / 2);
 
-		if (type == 1){//1 represents there are obstacles
+            this.node = BORDER;
 
-			Settings.BorderImage = new Image(getClass().getResource("/border.jpg").toExternalForm());
+        } else if (type == 0) {//0 represent no obstacle
 
-			BORDER=new ImageView(Settings.BorderImage);//Initializing imageView
+            this.node = new Rectangle(position.x, position.y, position.width, position.height);//which fill the non-obstacles area
+            //
+            //If we change position.height and width we coul hava kesik kesik lines
+            //For example x=1 others same and position.height 15
 
-			BORDER.setFitWidth(position.width);//burası engellerin oradaki oyuklara göre resmi uyduryor
-			BORDER.setFitHeight(position.height);
+            ((Rectangle) node).setFill(Color.PINK);//if it's null color greenyellow
+            //If backround was prepared we could use that
+        }
 
-			BORDER.setX(position.x+position.width/2 - position.width/2);
-			BORDER.setY(position.y+position.height/2 - position.height/2);
+        return node;
 
-			this.node= BORDER;
+    }
 
-		}
-		else if (type == 0){//0 represent no obstacle
+    public void setType(int type) {
 
-			this.node = new Rectangle(position.x, position.y, position.width, position.height);//which fill the non-obstacles area
-			//
-			//If we change position.height and width we coul hava kesik kesik lines
-			//For example x=1 others same and position.height 15
+        this.type = type;
 
-			((Rectangle)node).setFill(Color.PINK);//if it's null color greenyellow
-			//If backround was prepared we could use that
-		}
+    }
 
-		return node;
+    public int getType() {
+        return type;
+    }
 
-	}
-
-	public void setType(int type){
-		
-		this.type = type;
-		
-	}
-
-	public int getType() {
-		return type;
-	}
-	
 }

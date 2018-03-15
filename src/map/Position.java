@@ -6,80 +6,79 @@ import sample.*;
 
 public class Position {
 
-	double x;//x-axis
-	double y;//y-axis
-	
-	double width;
-	double height;
-	
-	double row;
-	double column;
+    double x;//x-axis
+    double y;//y-axis
 
-	public static void initScreenDimentions(){
+    double width;
+    double height;
 
-		Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-		}
-	
+    double row;
+    double column;
 
-	
-	public Position(double row, double column){
+    public static void initScreenDimentions() {
 
-		this.row = row;
-		this.column = column;
-		
-    	this.x = ((Settings.SCENE_WIDTH)/(Settings.COLUMN_CELL_COUNT))*column;//satıra döşüyor
-		this.y = (Settings.SCENE_HEIGHT/Settings.ROW_CELL_COUNT)*row;//sütunu döşüyor(Ters mantık)
-		this.width = Settings.SCENE_WIDTH/Settings.ROW_CELL_COUNT;
-		this.height = Settings.SCENE_HEIGHT/Settings.ROW_CELL_COUNT;
-		
-	}
+        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+    }
 
-	public double getX() {
-		return x;
-	}
 
-	public void setX(double x) {
-		this.x = x;
-	}
+    public Position(double row, double column) {
 
-	public double getY() {
-		return y;
-	}
+        this.row = row;
+        this.column = column;
 
-	public void setY(double y) {
-		this.y = y;
-	}
+        this.x = ((Settings.SCENE_WIDTH) / (Settings.COLUMN_CELL_COUNT)) * column;//satıra döşüyor
+        this.y = (Settings.SCENE_HEIGHT / Settings.ROW_CELL_COUNT) * row;//sütunu döşüyor(Ters mantık)
+        this.width = Settings.SCENE_WIDTH / Settings.ROW_CELL_COUNT;
+        this.height = Settings.SCENE_HEIGHT / Settings.ROW_CELL_COUNT;
 
-	public double getWidth() {
-		return width;
-	}
+    }
 
-	public void setWidth(double width) {
-		this.width = width;
-	}
+    public double getX() {
+        return x;
+    }
 
-	public double getHeight() {
-		return height;
-	}
+    public void setX(double x) {
+        this.x = x;
+    }
 
-	public void setHeight(double height) {
-		this.height = height;
-	}
+    public double getY() {
+        return y;
+    }
 
-	public double getRow() {
-		return row;
-	}
+    public void setY(double y) {
+        this.y = y;
+    }
 
-	public void setRow(double row) {
-		this.row = row;
-	}
+    public double getWidth() {
+        return width;
+    }
 
-	public double getColumn() {
-		return column;
-	}
+    public void setWidth(double width) {
+        this.width = width;
+    }
 
-	public void setColumn(double column) {
-		this.column = column;
-	}
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getRow() {
+        return row;
+    }
+
+    public void setRow(double row) {
+        this.row = row;
+    }
+
+    public double getColumn() {
+        return column;
+    }
+
+    public void setColumn(double column) {
+        this.column = column;
+    }
 
 }

@@ -23,6 +23,7 @@ public class Input {
     private KeyCode downKey = KeyCode.S;
     private KeyCode leftKey = KeyCode.A;
     private KeyCode rightKey = KeyCode.D;
+    private KeyCode interactKey = KeyCode.E;
     private static boolean isAttacking = false;
 
     Scene scene;
@@ -95,9 +96,11 @@ public class Input {
     }
 
     public boolean isAttack() {
-
         return keyboardBitSet.get(attackKey.ordinal());
     }
 
+    public boolean isInteract() {
+        return keyboardBitSet.get(interactKey.ordinal());
+    }
 
 }

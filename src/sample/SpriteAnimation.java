@@ -11,12 +11,12 @@ public class SpriteAnimation extends Transition {
     private final ImageView imageview;
     private final int count;
     private final int columns;
-    private int offSetY;
-    private int offSetX;
-    private final int Width;
-    private final int Height;
+    private double offSetY;
+    private double offSetX;
+    private final double Width;
+    private final double Height;
 
-    public SpriteAnimation(ImageView imageview, Duration duration, int count, int columns, int offSetX, int offSetY, int Width, int Height) {
+    public SpriteAnimation(ImageView imageview, Duration duration, int count, int columns, double offSetX, double offSetY, double Width, double Height) {
 
         this.imageview = imageview;
         this.count = count;
@@ -33,19 +33,19 @@ public class SpriteAnimation extends Transition {
 
     }
 
-    public int getOffSetY() {
+    public double getOffSetY() {
         return offSetY;
     }
 
-    public int getOffSetX() {
+    public double getOffSetX() {
         return offSetX;
     }
 
-    public void setOffSetY(int offSetY) {
+    public void setOffSetY(double offSetY) {
         this.offSetY = offSetY;
     }
 
-    public void setOffSetX(int offSetX) {
+    public void setOffSetX(double offSetX) {
         this.offSetX = offSetX;
     }
 
@@ -55,11 +55,10 @@ public class SpriteAnimation extends Transition {
 
         final int index = Math.min((int) Math.floor(count * frac), count - 1);
         if(index != lastIndex) {
-            final int x = (index % columns) * Width + offSetX;
-            final int y = (index / columns) * Height + offSetY;
+            final double x = (index % columns) * Width + offSetX;
+            final double y = (index / columns) * Height + offSetY;
             imageview.setViewport(new Rectangle2D(x, y, Width, Height));
             lastIndex = index;
         }
     }
 }
-
