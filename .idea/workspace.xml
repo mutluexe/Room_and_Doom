@@ -3,25 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ef4dc49c-59c7-4c78-8df8-fdf7b57aa148" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/BEHIND_quiver.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/BODY_male.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/conjure_ball_lightning_old.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/enemy.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/map/Cell.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/map/Cell.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/map/Grid.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/map/Grid.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/map/Position.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Input.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Input.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Main$1.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Main$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Main.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Settings.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/Settings.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/SpriteAnimation.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/SpriteAnimation.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/SpriteBase.class" afterPath="$PROJECT_DIR$/out/production/Room_and_Doom/sample/SpriteBase.class" />
-      <change beforePath="$PROJECT_DIR$/src/map/Cell.java" afterPath="$PROJECT_DIR$/src/map/Cell.java" />
-      <change beforePath="$PROJECT_DIR$/src/map/Grid.java" afterPath="$PROJECT_DIR$/src/map/Grid.java" />
-      <change beforePath="$PROJECT_DIR$/src/map/Position.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Settings.java" afterPath="$PROJECT_DIR$/src/sample/Settings.java" />
-      <change beforePath="$PROJECT_DIR$/src/sample/SpriteBase.java" afterPath="$PROJECT_DIR$/src/sample/SpriteBase.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -388,6 +369,14 @@
       <option name="presentableId" value="Default" />
       <updated>1520010590810</updated>
     </task>
+    <task id="LOCAL-00001" summary="Map system was updated">
+      <created>1521324159196</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1521324159196</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -424,6 +413,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Map system was updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Map system was updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
