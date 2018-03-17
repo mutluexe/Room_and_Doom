@@ -21,20 +21,42 @@ public class Main extends Application {
     Enemy enemy;
     Bullet bullet;
     Treasure treasure;
+    MovingObstacle movingObstacle1,movingObstacle2;
 
-    public Grid grid;//Obstacle's grid
 
     Pane playfieldLayout;
     Pane scoreLayout;
 
     Image playerImage;
     Image enemyImage;
+    Image borderImage;
     Image bulletImage;
     Image treasureImage;
     Image treasureOpenedImage;
 
 
+    Group root;
+    Stage primaryStage;
     Scene scene;
+    Grid map;
+
+    int[][] gameMap ={
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//araylist elemanları sütunsal olarak sayıyor obstacle hareketinde farkedersiniz 48.eleman bi border
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},//hareketsiz elemalar için bunun daha uygun olduğunu düşündüm
+    };
 
     //Creating lists
     List<Player> players = new ArrayList<>();
@@ -42,8 +64,7 @@ public class Main extends Application {
     List<Cell> Cells = new ArrayList<>();
     List<Bullet> bullets = new ArrayList<>();
     List<Treasure> treasures = new ArrayList<>();
-
-    ArrayList<Position> obstacles = new ArrayList<>();
+    List<MovingObstacle> movingObstacles=new ArrayList<>();
 
     /*
     Here collision text we will change it later and
@@ -51,17 +72,22 @@ public class Main extends Application {
     it's health bar will be decrease if it attacks vice versa*/
 
     Text collisionText = new Text();
-    boolean collision = false;
+    boolean player_EnemyCollision = false;
+    boolean player_MovingObstacleCollision=false;
+    boolean player_MapObstacleCollision=false;
+    boolean movingObstacle_EnemyCollision=false;
+    boolean movingObstacle_MapObstacleCollision=false;
     boolean attackCollision = false;
     boolean cellCollision = false;
     boolean bulletCollision = false;
 
+
+
     @Override
     public void start(Stage primaryStage) {
+        this.primaryStage=primaryStage;
+        root = new Group();
 
-        Group root = new Group();
-
-        grid=new Grid();//Obstacle's grid
 
         // create layers
         playfieldLayout = new Pane();
@@ -71,8 +97,6 @@ public class Main extends Application {
         root.getChildren().add(scoreLayout);
 
 
-        initObstacles();//first initiliaze after create
-        createObstacles();
 
         scene = new Scene(root, Settings.SCENE_WIDTH, Settings.SCENE_HEIGHT);
         primaryStage.setTitle("Room & Doom");
@@ -80,7 +104,9 @@ public class Main extends Application {
         primaryStage.show();
 
         //Calling our methods here
+        createMap();
         loadGame();
+        createMovingObstacles();
         createPlayers();
         createEnemy();
         createTreasure();
@@ -98,19 +124,36 @@ public class Main extends Application {
                 // movement
                 players.forEach(sprite -> sprite.move());
 
+                if(player_MovingObstacleCollision){
+                    movingObstacles.forEach(movingObstacle->movingObstacle.processInput());
+                    movingObstacles.forEach(movingObstacle->movingObstacle.move());
+                }
+
 
                 // check collisions
-                checkCollisionWithEnemy();
-                enemyBlock();
+                player_CheckCollisionWithEnemy();
+                player_enemyBlock();
+
+                player_CheckCollisionWithMovingObstacle();
+                player_movingObstacleBlock();
+
+                player_CheckCollisionWithMapObstacle();
+                player_mapObstacleBlock();
+
+                movingObstacle_CheckCollisionWithEnemy();
+                movingObstacle_EnemyBlock();
+
+                //movingObstacle_CheckCollisionWithMapObstacle(); burdaki algoritmada sıkıntı var açarsak adam gitmiyor
+                //movingObstacle_mapObstacleBlock();
+
                 checkAttackCollisionWithEnemy();
-                checkCollisionWithCell();
-                cellBlock();
                 checkCollisionWithBullet();
 
                 // update sprites in scene
                 players.forEach(sprite -> sprite.updateUI());
                 enemies.forEach(sprite -> sprite.updateUI());
                 bullets.forEach(sprite -> sprite.updateUI());
+                movingObstacles.forEach(mv->mv.updateUI());
 
                 // for enemy's attack (it shouldn't be called every frame so we should restrict it
                    if(now-lastUpdate >= 1000000000){
@@ -127,7 +170,6 @@ public class Main extends Application {
                 // update score, health, etc
                 updateScore();
 
-
             }
 
         };
@@ -142,21 +184,52 @@ public class Main extends Application {
         playerImage = new Image(getClass().getResource("/spritesheet.png").toExternalForm());
         enemyImage = new Image(getClass().getResource("/mageattack.png").toExternalForm());
         bulletImage = new Image(getClass().getResource("/plasmaball.png").toExternalForm());
+        borderImage = new Image(getClass().getResource("/border.jpg").toExternalForm());
         treasureImage = new Image(getClass().getResource("/treasure.png").toExternalForm());
         treasureOpenedImage = new Image(getClass().getResource("/treasureOpened.png").toExternalForm());
 
     }
+    private void createMovingObstacles(){
+        Image image= borderImage;
+        input = new Input(scene);
+        input.addListeners();
 
-    public void enemyBlock(){
-        if(collision){
-            player.rectangle.setX(player.rectangle.getX()-player.getDx());
-            player.rectangle.setY(player.rectangle.getY()-player.getDy());
+        movingObstacle1=new MovingObstacle(playfieldLayout,512,128,64,64,image,input);
+        movingObstacle2=new MovingObstacle(playfieldLayout,256,512,64,64,image,input);
+
+        movingObstacles.add(movingObstacle1);
+        movingObstacles.add(movingObstacle2);
+    }
+
+    private void createMap(){
+        map=new Grid(gameMap);//for special map
+        map.Draw(playfieldLayout);//which draws map to our pane
+    }
+    //blocks for player
+    public void player_enemyBlock(){
+        if(player_EnemyCollision){
+            getAfterCollision();
         }
     }
-    public void cellBlock(){
-        if(cellCollision){
-            player.rectangle.setX(player.rectangle.getX()-player.getDx());
-            player.rectangle.setY(player.rectangle.getY()-player.getDy());
+    public void player_movingObstacleBlock(){
+        if(player_MovingObstacleCollision){
+            getAfterCollision();
+        }
+    }
+    public void player_mapObstacleBlock(){
+        if(player_MapObstacleCollision){
+            getAfterCollision();
+        }
+    }
+    //blocks for moving obstacle
+    public void movingObstacle_EnemyBlock(){
+        if(movingObstacle_EnemyCollision){
+            getAfterCollision();
+        }
+    }
+    public void movingObstacle_mapObstacleBlock(){
+        if(movingObstacle_MapObstacleCollision){
+            getAfterCollision();
         }
     }
 
@@ -243,13 +316,13 @@ public class Main extends Application {
         }
     }
 
-    private void checkCollisionWithEnemy() {
-        collision = false;
+    private void player_CheckCollisionWithEnemy() {
+        player_EnemyCollision = false;
 
         for (Player player : players) {
             for (Enemy enemy : enemies) {
                 if (player.collidesWith(enemy)) {
-                    collision = true;
+                    player_EnemyCollision = true;
                 }
             }
         }
@@ -265,17 +338,51 @@ public class Main extends Application {
             }
         }
     }
-    private void checkCollisionWithCell(){
-        cellCollision = false;
+    private void player_CheckCollisionWithMovingObstacle() {
+        player_MovingObstacleCollision = false;
 
-        for (Player player: players){
-            for(Position obstacle: obstacles){
-                    if(player.collidesWithCell(obstacle)){
-                    cellCollision = true;
+        for (Player player : players) {
+            for (MovingObstacle obstacle : movingObstacles) {
+                if (player.collidesWithMovingObstacle(obstacle)) {
+                    player_MovingObstacleCollision = true;
                 }
             }
         }
     }
+    private void player_CheckCollisionWithMapObstacle() {
+        player_MapObstacleCollision = false;
+
+        for (Player player : players) {
+            for (Cell cell:map.mapArraylist) {
+                if (cell.getType()==1&&player.collidesWithCell(cell)) {
+                    player_MapObstacleCollision = true;
+                }
+            }
+        }
+    }
+    private void movingObstacle_CheckCollisionWithEnemy() {
+        movingObstacle_EnemyCollision = false;
+
+        for (MovingObstacle obstacle:movingObstacles) {
+            for (Enemy enemy : enemies) {
+                if (obstacle.collidesWithEnemy(enemy)) {
+                    movingObstacle_EnemyCollision = true;
+                }
+            }
+        }
+    }
+    private void movingObstacle_CheckCollisionWithMapObstacle() {
+        movingObstacle_MapObstacleCollision = false;
+
+        for (MovingObstacle obstacle:movingObstacles) {
+            for (Cell cell : map.mapArraylist) {
+                if (cell.getType()==1&&obstacle.collidesWithCell(cell)) {
+                    movingObstacle_MapObstacleCollision = true;
+                }
+            }
+        }
+    }
+
     private void checkCollisionWithBullet(){
         bulletCollision = false;
 
@@ -299,90 +406,12 @@ public class Main extends Application {
         } else {
             collisionText.setText("");
         }
-
     }
 
-
-    public void createObstacles(){
-
-        for (int i =0;i< Settings.COLUMN_CELL_COUNT;i++) {
-
-            for (int j = 0; j < Settings.ROW_CELL_COUNT; j++) {
-
-                Position position = new Position(i, j);
-
-                int type = 0;
-
-                //Check if not boundary
-
-                if (i != Settings.COLUMN_CELL_COUNT - 1 && j != Settings.ROW_CELL_COUNT - 1 && i != 0 && j != 0) {
-                    if (i == 1 && j == 1)
-                        type = 0;
-                    else if (isObstacle(position))
-                        type = 1;
-
-                }
-
-                Cell cell = new Cell(position, type);
-                Cells.add(cell);
-                grid.addCell(cell);//Cell was added to grid
-
-                playfieldLayout.getChildren().add(cell.getNode());
-            }
-
-        }
+    private void getAfterCollision(){
+        player.rectangle.setX(player.rectangle.getX()-player.getDx());
+        player.rectangle.setY(player.rectangle.getY()-player.getDy());
     }
-
-
-    public  void initObstacles(){//Randomly filled but we must think about that
-
-            //Generate Left Obstacles
-        for(int i=0;i<Settings.ROW_CELL_COUNT;i++){
-            obstacles.add(new Position(i, 1));
-        }
-
-        //Generate Reflection
-        int loopSize = obstacles.size();
-        for (int i =0;i< loopSize;i++){
-
-            Position tmpPosition = obstacles.get(i);
-            Position newPosition = new Position(tmpPosition.getRow(), Settings.COLUMN_CELL_COUNT-1-tmpPosition.getColumn());
-            obstacles.add(newPosition);
-
-        }
-
-        //Generate Center Obstacles
-        obstacles.add(new Position(0,0));
-        obstacles.add(new Position(6, 6));
-        obstacles.add(new Position(7, 6));
-        obstacles.add(new Position(8, 6));
-        obstacles.add(new Position(8, 7));
-        obstacles.add(new Position(8, 8));
-
-        obstacles.add(new Position(7, 8));
-        obstacles.add(new Position(6, 8));
-
-        obstacles.add(new Position(10, 7));
-        obstacles.add(new Position(11, 7));
-        obstacles.add(new Position(12, 7));
-
-        obstacles.add(new Position(2, 7));
-        obstacles.add(new Position(3, 7));
-        obstacles.add(new Position(4, 7));
-
-    }
-
-    public  boolean isObstacle(Position position){
-        for (int i =0;i< obstacles.size();i++){
-            Position tmpPosition = obstacles.get(i);
-            if (position.getRow() == tmpPosition.getRow() && position.getColumn() == tmpPosition.getColumn())
-                return true;
-        }
-
-        return false;
-
-    }//Controlling obstacle where the position
-
     public static void main(String[] args) {
         launch(args);
     }

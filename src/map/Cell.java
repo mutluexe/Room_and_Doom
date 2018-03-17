@@ -1,68 +1,108 @@
 package map;
 
-import javafx.scene.Node;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import sample.*;
 
-import java.util.ArrayList;
-
 public class Cell {
 
-    public int type;
-    public Position position;
-    public Node node;
-    public ImageView BORDER;
+    int type;
+    double x,y,width,height;
+    Rectangle rect;
 
-    public Cell(Position position, int type) {
+    Image groundImage;
+    Image borderImage;
 
-        this.position = position;
+    NonMovingObstacle nonMv;
+
+
+    public Cell(double x,double y,double width,double height,int type){
+
+        this.x=x;
+        this.y=y;
+        this.width=width;
+        this.height=height;
         this.type = type;
+
+        rect=new Rectangle(x,y,width,height);
+        rect.setFill(Color.PINK);//DEFAULT RECTANGLE
+
+
+
+        //groundImage=new Image(getClass().getResource("/medevil.jpg").toExternalForm());
+        borderImage = new Image(getClass().getResource("/border.jpg").toExternalForm());
 
     }
 
-    public Node getNode() {
+    public Rectangle getRect(){
 
 
-        if (type == 1) {//1 represents there are obstacles
+        if (type == Settings.BORDER_CONSTANT){//1 represents there are obstacles
 
-            Settings.BorderImage = new Image(getClass().getResource("/border.jpg").toExternalForm());
+            nonMv=new NonMovingObstacle(x,y,width,height,borderImage);
 
-            BORDER = new ImageView(Settings.BorderImage);//Initializing imageView
+            this.rect=nonMv.getRect();
 
-            BORDER.setFitWidth(position.width);//burası engellerin oradaki oyuklara göre resmi uyduryor
-            BORDER.setFitHeight(position.height);
-
-            BORDER.setX(position.x + position.width / 2 - position.width / 2);
-            BORDER.setY(position.y + position.height / 2 - position.height / 2);
-
-            this.node = BORDER;
-
-        } else if (type == 0) {//0 represent no obstacle
-
-            this.node = new Rectangle(position.x, position.y, position.width, position.height);//which fill the non-obstacles area
-            //
-            //If we change position.height and width we coul hava kesik kesik lines
-            //For example x=1 others same and position.height 15
-
-            ((Rectangle) node).setFill(Color.PINK);//if it's null color greenyellow
-            //If backround was prepared we could use that
         }
+        else if (type == Settings.TILES_CONSTANT){
+			rect=new Rectangle(x,y,width,height);
+			rect.setFill(Color.DARKGREEN);
 
-        return node;
+
+            /*nonMv=new NonMovingObject(x,y,width,height,groundImage);
+            this.rect=nonMv.getRect();*/
+
+        }
+        return rect;
 
     }
 
-    public void setType(int type) {
-
-        this.type = type;
-
+    public void UpdateUI(){
+        rect.relocate(rect.getTranslateX(),rect.getLayoutY());
     }
 
     public int getType() {
         return type;
     }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+
 
 }

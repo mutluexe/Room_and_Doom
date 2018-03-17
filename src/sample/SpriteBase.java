@@ -5,8 +5,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import map.Cell;
-import map.Position;
-
+import map.MovingObstacle;
 
 
 public abstract class SpriteBase extends Pane {
@@ -14,11 +13,11 @@ public abstract class SpriteBase extends Pane {
     Image image;
     ImageView imageView;
 
-
     Pane layer;
 
     double x;
     double y;
+
     Rectangle rectangle;
 
     double dx;
@@ -179,9 +178,14 @@ public abstract class SpriteBase extends Pane {
         //(otherSprite.rectangle.getX() + otherSprite.rectangle.getWidth() >= rectangle.getX() && otherSprite.rectangle.getY() + otherSprite.rectangle.getHeight() >= rectangle.getY() && otherSprite.rectangle.getX() <= rectangle.getX() + Settings.TILE_WIDTH && otherSprite.rectangle.getY() <= rectangle.getY() + Settings.TILE_HEIGHT);
 
     }
-    public boolean collidesWithCell(Position cell) {
+    public boolean collidesWithCell(Cell cell) {
 
         return (cell.getX() + cell.getWidth() >= rectangle.getX() && cell.getY() + cell.getHeight() >= rectangle.getY() && cell.getX() <= rectangle.getX() + rectangle.getWidth() && cell.getY() <= rectangle.getY() + rectangle.getHeight());
+    }
+    public boolean collidesWithMovingObstacle(MovingObstacle movingObstacle) {
+
+        return (movingObstacle.getRect().getX() + movingObstacle.getRect().getWidth() >= rectangle.getX() && movingObstacle.getRect().getY() + movingObstacle.getRect().getHeight() >= rectangle.getY() && movingObstacle.getRect().getX() <= rectangle.getX() + Settings.TILE_WIDTH && movingObstacle.getRect().getY() <= rectangle.getY() + Settings.TILE_HEIGHT);
+
     }
     public boolean attackCollides( SpriteBase otherSprite) {
         //Right Attack Check
